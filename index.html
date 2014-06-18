@@ -35,6 +35,7 @@
       }
       body {
         background: #16a085;
+        cursor: pointer;
         display: table;
         margin: 0 auto;
         max-width: 60em;
@@ -48,180 +49,206 @@
         text-align: center;
         vertical-align: middle;
       }
+      .back {
+        border: 0;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 25%;
+      }
     </style>
   </head>
   <body>
+    <a class="back"></a>
     <main></main>
+    <script src="fastclick.js"></script>
     <script>
-      var colors = [
-        '#16a085', '#27ae60', '#2980b9', '#8e44ad', '#2c3e50', '#f39c12',
-        '#d35400', '#c0392b', '#1abc9c', '#2ecc71', '#3498db', '#34495e',
-        '#f1c40f', '#e67e22', '#e74c3c'
-      ];
-      var ideas = [
-        'kayaking',
-        'canoeing',
-        'lake tahoe',
-        'spa',
-        'log cabin',
-        'Yellowstone',
-        'Frank Lloyd Wright structures',
-        'tea lounge',
-        'cruise',
-        'napa',
-        'hot tub',
-        'water park',
-        'personal massage',
-        'magic show',
-        'hands-on museum',
-        'make mugs at a pottery chain',
-        'shop for birthday gifts on etsy',
-        'jazz bar',
-        'piano bar',
-        'ethiopian food',
-        'aquarium',
-        'see a shooting star',
-        'go to a planetarium',
-        'fly a kite in the park',
-        'go to a dog park',
-        "walk someone else's dog",
-        'private karaoke bar with friends',
-        'oxygen bar',
-        'bonfire on a beach',
-        'ice skating',
-        'roof garden',
-        'completely dark restaurant',
-        'bad movie night at local theatre',
-        'arcade like dave & busters',
-        'botanical gardens',
-        "farmer's market",
-        'themed movie dinner night (like the breakfast club with breakfast club sandwiches)',
-        'drive-in theatre',
-        'antique mall',
-        'watch space jam while wearing basketball jersey and shorts',
-        'blind taste testing',
-        'blind wine tasing',
-        'ice everything: ice wine, ice skating, ice cream, icelandic restaurant',
-        'watch scrubs while wearing scrubs and drinking appletinis',
-        'find place with christmas all year round',
-        'spanish everything: paella, sangria, spanish wine',
-        'tandem bicycles',
-        'camping',
-        'late-night dinner picnic by the pier',
-        'go to casino',
-        'senior citizen everything: play bingo, eat apple sauce, and watch the price is right',
-        'go to singalong movie',
-        'reverse evening: dessert, activity, dinner at casual resaurant, appetizers and wine under the stars',
-        "against the grain: go to movie theatre to play arcade games, go to bar to have virgin drinks, go to fancy restaurant to order from kid's menu",
-        'silent everything: silent dinner and silent film',
-        '1950s-themed night: TV dinner, milkshakes, american graffiti, doo-wop records',
-        '1980s-themed prom party',
-        'airline everything: airline food (TV dinners), sky bar, skyline',
-        'future everything: segways, astronaut food, sci-fi film, dippin dots ice cream',
-        'scavenger night',
-        'compile a middle-school/high-school music playlist',
-        'karaoke at home',
-        'comedy show',
-        'go to grocery store and buy dinner ingredients for $5',
-        "camp inside and microwave s'mores",
-        'water-gun fight',
-        'rock climbing',
-        'adult outdoor slide in SF',
-        'swing on swings',
-        'play foursquare',
-        'competitive sandcastle building at the beach',
-        'leap into piles of leaves',
-        'water balloon fight',
-        'astrology',
-        'lunch picnic at the park',
-        'astrology',
-        'fortune teller',
-        'everything that starts with the letter J',
-        'buy old records at record shop',
-        'buy old VHS tapes at video shop',
-        'buy old DVDs at video shop',
-        'indian night: indian food and bollywood film',
-        'become a <a href="http://lowcommitmentprojects.com/2012/01/02/sandwich-artist/" target="_blank">sandwich artist</a>',
-        'write postal letters to parents',
-        'make a terrarium',
-        'eat lunchables in the park',
-        'play kickball',
-        'play with nerf football',
-        'shop for clothes',
-        'dessert bar',
-        'bowling',
-        'charades',
-        'hiking',
-        'stargazing with a bottle of wine',
-        'bikram yoga',
-        'volleyball at sports page',
-        'volleyball at the beach',
-        'compose literotica',
-        'take wine-tasting classes',
-        'take cooking classes',
-        'live bar music',
-        'concert',
-        'bicycling on a trail',
-      ];
-      var main = document.querySelector('main');
-      var maxFontSize = '100px';
-      var minFontSize = '32px';
-      var resizedTimeout;
+      window.addEventListener('load', function () {
+        var colors = [
+          '#16a085', '#27ae60', '#2980b9', '#8e44ad', '#2c3e50', '#f39c12',
+          '#d35400', '#c0392b', '#1abc9c', '#2ecc71', '#3498db', '#34495e',
+          '#f1c40f', '#e67e22', '#e74c3c'
+        ];
+        var ideas = [
+          'kayaking',
+          'canoeing',
+          'lake tahoe',
+          'spa',
+          'log cabin',
+          'Yellowstone',
+          'Frank Lloyd Wright structures',
+          'tea lounge',
+          'cruise',
+          'napa',
+          'hot tub',
+          'water park',
+          'personal massage',
+          'magic show',
+          'hands-on museum',
+          'make mugs at a pottery chain',
+          'shop for birthday gifts on etsy',
+          'jazz bar',
+          'piano bar',
+          'ethiopian food',
+          'aquarium',
+          'see a shooting star',
+          'go to a planetarium',
+          'fly a kite in the park',
+          'go to a dog park',
+          "walk someone else's dog",
+          'private karaoke bar with friends',
+          'oxygen bar',
+          'bonfire on a beach',
+          'ice skating',
+          'roof garden',
+          'completely dark restaurant',
+          'bad movie night at local theatre',
+          'arcade like dave & busters',
+          'botanical gardens',
+          "farmer's market",
+          'themed movie dinner night (like the breakfast club with breakfast club sandwiches)',
+          'drive-in theatre',
+          'antique mall',
+          'watch space jam while wearing basketball jersey and shorts',
+          'blind taste testing',
+          'blind wine tasing',
+          'ice everything: ice wine, ice skating, ice cream, icelandic restaurant',
+          'watch scrubs while wearing scrubs and drinking appletinis',
+          'find place with christmas all year round',
+          'spanish everything: paella, sangria, spanish wine',
+          'tandem bicycles',
+          'camping',
+          'late-night dinner picnic by the pier',
+          'go to casino',
+          'senior citizen everything: play bingo, eat apple sauce, and watch the price is right',
+          'go to singalong movie',
+          'reverse evening: dessert, activity, dinner at casual resaurant, appetizers and wine under the stars',
+          "against the grain: go to movie theatre to play arcade games, go to bar to have virgin drinks, go to fancy restaurant to order from kid's menu",
+          'silent everything: silent dinner and silent film',
+          '1950s-themed night: TV dinner, milkshakes, american graffiti, doo-wop records',
+          '1980s-themed prom party',
+          'airline everything: airline food (TV dinners), sky bar, skyline',
+          'future everything: segways, astronaut food, sci-fi film, dippin dots ice cream',
+          'scavenger night',
+          'compile a middle-school/high-school music playlist',
+          'karaoke at home',
+          'comedy show',
+          'go to grocery store and buy dinner ingredients for $5',
+          "camp inside and microwave s'mores",
+          'water-gun fight',
+          'rock climbing',
+          'adult outdoor slide in SF',
+          'swing on swings',
+          'play foursquare',
+          'competitive sandcastle building at the beach',
+          'leap into piles of leaves',
+          'water balloon fight',
+          'astrology',
+          'lunch picnic at the park',
+          'astrology',
+          'fortune teller',
+          'everything that starts with the letter J',
+          'buy old records at record shop',
+          'buy old VHS tapes at video shop',
+          'buy old DVDs at video shop',
+          'indian night: indian food and bollywood film',
+          'become a <a href="http://lowcommitmentprojects.com/2012/01/02/sandwich-artist/" target="_blank">sandwich artist</a>',
+          'write postal letters to parents',
+          'make a terrarium',
+          'eat lunchables in the park',
+          'play kickball',
+          'play with nerf football',
+          'shop for clothes',
+          'dessert bar',
+          'bowling',
+          'charades',
+          'hiking',
+          'stargazing with a bottle of wine',
+          'bikram yoga',
+          'volleyball at sports page',
+          'volleyball at the beach',
+          'compose literotica',
+          'take wine-tasting classes',
+          'take cooking classes',
+          'live bar music',
+          'concert',
+          'bicycling on a trail',
+        ];
+        var main = document.querySelector('main');
+        var maxFontSize = '100px';
+        var minFontSize = '32px';
+        var resizedTimeout;
 
-      function randomIndex(array) {
-        return Math.floor(Math.random() * array.length);
-      }
-
-      function resizer() {
-        main.style.fontSize = Math.max(
-          Math.min(main.offsetWidth / 10, parseFloat(maxFontSize)),
-          parseFloat(minFontSize)
-        ) + 'px';
-      }
-
-      function debouncedResizer() {
-        clearTimeout(resizedTimeout);
-        resizedTimeout = setTimeout(resizer, 100);
-      }
-
-      function newIdea(e, init) {
-        var ideaIdx = randomIndex(ideas);
-        main.innerHTML = ideas[ideaIdx];
-
-        var colorIdx = randomIndex(colors);
-        document.body.style.backgroundColor = colors[colorIdx];
-
-        if (init) {
-          window.history.replaceState({idea: ideaIdx, color: colorIdx},
-            document.title, '');
-        } else {
-          window.history.pushState({idea: ideaIdx, color: colorIdx});
+        function randomIndex(array) {
+          return Math.floor(Math.random() * array.length);
         }
-      }
 
-      window.addEventListener('popstate', function (e) {
-        if (event.state === null) {
-          return;
+        function resizer() {
+          main.style.fontSize = Math.max(
+            Math.min(main.offsetWidth / 10, parseFloat(maxFontSize)),
+            parseFloat(minFontSize)
+          ) + 'px';
         }
-        main.innerHTML = ideas[event.state.idea];
-        document.body.style.backgroundColor = colors[event.state.color];
-      }, false);
 
-      document.body.addEventListener('click', newIdea, false);
-      document.body.addEventListener('keyup', function keyupNext(e) {
-        if (e.keyCode === 37 || e.keyCode === 38) {
+        function debouncedResizer() {
+          clearTimeout(resizedTimeout);
+          resizedTimeout = setTimeout(resizer, 100);
+        }
+
+        function newIdea(e, init) {
+          var ideaIdx = randomIndex(ideas);
+          main.innerHTML = ideas[ideaIdx];
+
+          var colorIdx = randomIndex(colors);
+          document.body.style.backgroundColor = colors[colorIdx];
+
+          if (init) {
+            window.history.replaceState({idea: ideaIdx, color: colorIdx},
+              document.title, '');
+          } else {
+            window.history.pushState({idea: ideaIdx, color: colorIdx});
+          }
+        }
+
+        function goBack(e) {
           window.history.back();
+          e.preventDefault();
+          e.stopPropagation();
         }
-        if (e.keyCode === 39 || e.keyCode === 40) {
-          newIdea();
-          // TODO: Call `window.history.forward();` if we can go forward.
+
+        document.querySelector('.back').addEventListener('click', goBack, false);
+
+        document.body.addEventListener('click', newIdea, false);
+        document.body.addEventListener('keyup', function keyupNext(e) {
+          if (e.keyCode === 37 || e.keyCode === 38) {
+            window.history.back();
+          }
+          if (e.keyCode === 39 || e.keyCode === 40) {
+            newIdea();
+            // TODO: Call `window.history.forward();` if we can go forward.
+          }
+        }, false);
+
+        window.addEventListener('resize', debouncedResizer, false);
+        window.addEventListener('orientationchange', debouncedResizer, false);
+
+        window.addEventListener('popstate', function (e) {
+          if (event.state === null) {
+            return;
+          }
+          main.innerHTML = ideas[event.state.idea];
+          document.body.style.backgroundColor = colors[event.state.color];
+        }, false);
+
+        newIdea(null, true);
+        resizer();
+
+        if ('FastClick' in window) {
+          window.FastClick.attach(document.body);
         }
       }, false);
-      window.addEventListener('resize', debouncedResizer, false);
-      window.addEventListener('orientationchange', debouncedResizer, false);
-
-      newIdea(null, true);
-      resizer();
     </script>
   </body>
 </html>
